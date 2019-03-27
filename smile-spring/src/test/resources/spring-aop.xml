@@ -15,4 +15,14 @@
         <property name="worldName" value="THE FIRST WORLD!"></property> 
     	<property name = "robot" ref="robot"></property> 
     </bean>
+
+    <bean id="autoProxyCreator" class="com.simple.spring.aop.AspectJAwareAdvisorAutoProxyCreator"></bean>
+
+    <bean id="timeInterceptor" class="com.simple.spring.aop.TimerInterceptor"></bean>
+
+    <bean id="aspectjAspect" class="com.simple.spring.aop.AspectJExpressionPointcutAdvisor">
+        <property name="advice" ref="timeInterceptor"></property>
+        <!-- 此处的expression注入并不是简单的ioc注入-->
+        <property name="expression" value="execution(* com.simple.spring.ioc.*.*(..))"></property>
+    </bean>
 </beans>

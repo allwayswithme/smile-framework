@@ -2,7 +2,7 @@ package com.simple.spring.ioc;
 
 public class HelloWordServiceImpl implements HelloWorldService {
 	
-	private Robot robot;
+	private RobotPOJO robot;
 	private String worldName;
 
 	@Override
@@ -11,11 +11,11 @@ public class HelloWordServiceImpl implements HelloWorldService {
 		this.robot.sayHello();
 	}
 
-	public Robot getRobot() {
+	public RobotPOJO getRobot() {
 		return robot;
 	}
 
-	public void setRobot(Robot robot) {
+	public void setRobot(RobotPOJO robot) {
 		this.robot = robot;
 	}
 

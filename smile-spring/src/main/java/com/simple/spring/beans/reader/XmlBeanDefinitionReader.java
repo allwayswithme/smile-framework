@@ -78,10 +78,10 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 		}
 		
 		//在当前注册信息中添加该bean，表示该bean已经注册
-		getRegistry().put(name, beanDefinition);
+		this.getRegistry().put(name, beanDefinition);
 		
 		//继续读取xml信息并填充bean的属性
-		processProperty(ele, beanDefinition);
+		this.processProperty(ele, beanDefinition);
 	}
 
 	private void processProperty(Element ele, BeanDefinition beanDefinition) {

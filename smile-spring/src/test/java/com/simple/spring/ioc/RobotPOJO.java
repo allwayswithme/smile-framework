@@ -1,9 +1,9 @@
 package com.simple.spring.ioc;
 
-public class Robot {
+public class RobotPOJO {
 	private String robotName;
 	
-	public Robot() {
+	public RobotPOJO() {
 		this.robotName = "Tom";
 	}
 	

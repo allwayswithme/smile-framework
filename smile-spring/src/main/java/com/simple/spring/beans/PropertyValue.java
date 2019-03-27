@@ -2,8 +2,6 @@ package com.simple.spring.beans;
 
 /**
  * 对bean里面property的包装
- * @author Administrator
- *
  */
 public class PropertyValue {
 	
