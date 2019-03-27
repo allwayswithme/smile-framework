@@ -5,6 +5,9 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * url资源
+ */
 public class UrlResource implements Resource {
 	
 	private final URL url;

@@ -4,19 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.simple.spring.beans.BeanDefinition;
-import com.simple.spring.io.ResourceLoader;
+import com.simple.spring.io.ClassLoaderResourceLoader;
 
-public abstract class AbstractBeanDefinitonReader implements BeanDefinitionReader {
+public abstract class AbstractBeanDefinitionReader implements BeanDefinitionReader {
 	
-	private ResourceLoader resourceLoader;
+	private ClassLoaderResourceLoader resourceLoader;
 	private Map<String,BeanDefinition> registry;
 	
-	public AbstractBeanDefinitonReader(ResourceLoader resourceLoader) {
+	public AbstractBeanDefinitionReader(ClassLoaderResourceLoader resourceLoader) {
 		this.resourceLoader = resourceLoader;
 		this.registry = new HashMap<String, BeanDefinition>();
 	}
 
-	public ResourceLoader getResourceLoader() {
+	public ClassLoaderResourceLoader getResourceLoader() {
 		return resourceLoader;
 	}
 

@@ -13,19 +13,19 @@ import org.w3c.dom.NodeList;
 import com.simple.spring.beans.BeanDefinition;
 import com.simple.spring.beans.BeanReference;
 import com.simple.spring.beans.PropertyValue;
-import com.simple.spring.io.ResourceLoader;
+import com.simple.spring.io.ClassLoaderResourceLoader;
 
-public class XmlBeanDefinitionReader extends AbstractBeanDefinitonReader {
+public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 	
 
 	
-	public XmlBeanDefinitionReader(ResourceLoader resourceLoader) {
+	public XmlBeanDefinitionReader(ClassLoaderResourceLoader resourceLoader) {
 		super(resourceLoader);
 	}
 
 	/**
 	 * 读取xml文件
-	 * @param location classpath:tinyioc.xml
+	 * @param location classpath:spring-ioc.xml
 	 */
 	@Override
 	public void loadBeanDefinitions(String location) throws Exception {

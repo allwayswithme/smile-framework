@@ -1,10 +1,9 @@
 package com.simple.spring.io;
 
-import java.net.URL;
+/**
+ * 用来加载资源的基础接口
+ */
+public interface ResourceLoader {
 
-public class ResourceLoader {
-	public Resource getResource(String location) {
-		URL resource = this.getClass().getClassLoader().getResource(location);
-		return new UrlResource(resource);
-	}
+	Resource getResource(String location);
 }

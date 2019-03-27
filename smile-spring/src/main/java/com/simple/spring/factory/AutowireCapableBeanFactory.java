@@ -9,7 +9,6 @@ import com.simple.spring.beans.PropertyValue;
 
 /**
  * autowireBean工厂类，内部持有一个map保存beanName和map的关系
- * @author Administrator
  *
  */
 public class AutowireCapableBeanFactory extends AbstractBeanFactory {

@@ -8,29 +8,26 @@ import java.util.Map.Entry;
 import com.simple.spring.beans.BeanDefinition;
 import com.simple.spring.beans.BeanReference;
 import com.simple.spring.beans.PropertyValue;
+import com.simple.spring.beans.reader.AbstractBeanDefinitionReader;
 import com.simple.spring.beans.reader.XmlBeanDefinitionReader;
 import com.simple.spring.factory.AbstractBeanFactory;
 import com.simple.spring.factory.AutowireCapableBeanFactory;
-import com.simple.spring.io.ResourceLoader;
-/**
- * 已经有了beanFactory了，为什么要用ApplicationContext
- * @author Administrator
- *
- */
+import com.simple.spring.io.ClassLoaderResourceLoader;
+
+
 public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
 
 	private String configLocation;
 	
 	public ClassPathXmlApplicationContext(String configLocation) throws Exception {
 		this(configLocation ,new AutowireCapableBeanFactory());
-		
 	}
 
 	public ClassPathXmlApplicationContext(String configLocation,
 			AbstractBeanFactory beanFactory) throws Exception {
 		super(beanFactory);
 		this.configLocation = configLocation;
-		loadBeanDefinition();
+		this.loadBeanDefinition();
 	}
 
 
@@ -40,10 +37,10 @@ public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
 	@Override
 	public void loadBeanDefinition() throws Exception {
 		//调用reader读取xml中的内容，并将内容存储进Map<String, BeanDefinition>里面
-		XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
-		xmlBeanDefinitionReader.loadBeanDefinitions(configLocation);
+		AbstractBeanDefinitionReader abstractBeanDefinitionReader = new XmlBeanDefinitionReader(new ClassLoaderResourceLoader());
+		abstractBeanDefinitionReader.loadBeanDefinitions(configLocation);
 		
-		Map<String, BeanDefinition> mRegistry = xmlBeanDefinitionReader.getRegistry();
+		Map<String, BeanDefinition> mRegistry = abstractBeanDefinitionReader.getRegistry();
 		
 		//此时如果是懒加载，则不进行实例化，否则，则进行实例化
 		this.beanFactory.getBeanDefinitonMap().putAll(mRegistry);
