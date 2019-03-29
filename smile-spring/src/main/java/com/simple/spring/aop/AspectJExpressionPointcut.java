@@ -34,6 +34,7 @@ public class AspectJExpressionPointcut implements Pointcut, ClassFilter, MethodM
 	}
 
 	public AspectJExpressionPointcut() {
+		//一个构造方法内部再调用一个构造方法
 		this(DEFAULT_SUPPORTED_PRIMITIVES);
 	}
 
@@ -44,7 +45,7 @@ public class AspectJExpressionPointcut implements Pointcut, ClassFilter, MethodM
 
 	protected void checkReadyToMatch() {
 		if (pointcutExpression == null) {
-			pointcutExpression = buildPointcutExpression();
+			pointcutExpression = this.buildPointcutExpression();
 		}
 	}
 
@@ -68,13 +69,13 @@ public class AspectJExpressionPointcut implements Pointcut, ClassFilter, MethodM
 
 	@Override
 	public boolean matches(Class targetClass) {
-		checkReadyToMatch();
+		this.checkReadyToMatch();
 		return pointcutExpression.couldMatchJoinPointsInType(targetClass);
 	}
 
 	@Override
 	public boolean matches(Method method, Class targetClass) {
-		checkReadyToMatch();
+		this.checkReadyToMatch();
 		ShadowMatch shadowMatch = pointcutExpression.matchesMethodExecution(method);
 		if (shadowMatch.alwaysMatches()) {
 			return true;

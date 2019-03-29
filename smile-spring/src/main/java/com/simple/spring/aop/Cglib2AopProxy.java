@@ -13,16 +13,24 @@ public class Cglib2AopProxy extends AbstractAopProxy {
 		super(advised);
 	}
 
+	/**
+	 * 利用Cglib生成代理类
+	 * @return
+	 */
 	@Override
 	public Object getProxy() {
 		Enhancer enhancer = new Enhancer();
 		enhancer.setSuperclass(advised.getTargetSource().getTargetClass());
 		enhancer.setInterfaces(advised.getTargetSource().getInterfaces());
+		//
 		enhancer.setCallback(new DynamicAdvisedInterceptor(advised));
 		Object enhanced = enhancer.create();
 		return enhanced;
 	}
 
+	/**
+	 * 内部静态类 DynamicAdvisedInterceptor
+	 */
 	private static class DynamicAdvisedInterceptor implements MethodInterceptor {
 
 		private AdvisedSupport advised;
@@ -44,6 +52,9 @@ public class Cglib2AopProxy extends AbstractAopProxy {
 		}
 	}
 
+	/**
+	 * 内部静态类 CglibMethodInvocation
+	 */
 	private static class CglibMethodInvocation extends ReflectiveMethodInvocation {
 
 		private final MethodProxy methodProxy;

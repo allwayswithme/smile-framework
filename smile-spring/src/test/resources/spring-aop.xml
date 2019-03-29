@@ -11,18 +11,20 @@
 
     <bean id="robot" class="com.simple.spring.ioc.RobotPOJO" />
 
-    <bean id="helloWorldService" class="com.simple.spring.ioc.HelloWordServiceImpl">
+    <bean id="helloWorldService" class="com.simple.spring.ioc.HelloWorldServiceImpl">
         <property name="worldName" value="THE FIRST WORLD!"></property> 
     	<property name = "robot" ref="robot"></property> 
     </bean>
 
+    <!--相当于<aop:aspectj-autoproxy/>-->
     <bean id="autoProxyCreator" class="com.simple.spring.aop.AspectJAwareAdvisorAutoProxyCreator"></bean>
 
-    <bean id="timeInterceptor" class="com.simple.spring.aop.TimerInterceptor"></bean>
-
+    <!--定义一个切面-->
     <bean id="aspectjAspect" class="com.simple.spring.aop.AspectJExpressionPointcutAdvisor">
         <property name="advice" ref="timeInterceptor"></property>
-        <!-- 此处的expression注入并不是简单的ioc注入-->
+        <!-- 通过setExpression()的setter方法注入，如果没有相应的setter方法，则直接赋值-->
         <property name="expression" value="execution(* com.simple.spring.ioc.*.*(..))"></property>
     </bean>
+    <!--切面的一个属性-->
+    <bean id="timeInterceptor" class="com.simple.spring.aop.TimerInterceptor"></bean>
 </beans>

@@ -22,7 +22,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext{
 	public abstract void loadBeanDefinitions(AbstractBeanFactory beanFactory) throws Exception;
 
 	/**
-	 * aop
+	 * 注册aop切面bean
 	 */
 	protected void registerBeanPostProcessors(AbstractBeanFactory beanFactory) throws Exception {
 		List beanPostProcessors = beanFactory.getBeansForType(BeanPostProcessor.class);
@@ -39,7 +39,4 @@ public abstract class AbstractApplicationContext implements ApplicationContext{
 	public Object getBean(String name) throws Exception {
 		return this.beanFactory.getBean(name);
 	}
-
-
-
 }

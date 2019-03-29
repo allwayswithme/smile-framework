@@ -11,7 +11,7 @@
 
     <bean id="robot" class="com.simple.spring.ioc.RobotPOJO" />
 
-    <bean id="helloWorldService" class="com.simple.spring.ioc.HelloWordServiceImpl">
+    <bean id="helloWorldService" class="com.simple.spring.ioc.HelloWorldServiceImpl">
         <property name="worldName" value="THE FIRST WORLD!"></property> 
     	<property name = "robot" ref="robot"></property> 
     </bean>

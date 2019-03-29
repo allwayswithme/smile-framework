@@ -1,14 +1,14 @@
 package com.simple.spring.ioc;
 
-public class HelloWordServiceImpl implements HelloWorldService {
+public class HelloWorldServiceImpl implements HelloWorldService {
 	
 	private RobotPOJO robot;
 	private String worldName;
 
 	@Override
 	public void helloWorld() {
-		System.out.println("worldName============" + this.worldName);
-		this.robot.sayHello();
+		System.out.println("hello," + this.worldName);
+		//this.robot.sayHello();
 	}
 
 	public RobotPOJO getRobot() {
@@ -19,6 +19,4 @@ public class HelloWordServiceImpl implements HelloWorldService {
 		this.robot = robot;
 	}
 
-	
-	
 }
